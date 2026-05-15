@@ -1,0 +1,29 @@
+{
+  "name": "M Fitness Club",
+  "short_name": "M Fitness",
+  "description": "Private fitness club in Sterling Heights, MI — 24/7 access, elite equipment, sauna, turf.",
+  "start_url": "./index.html",
+  "display": "browser",
+  "background_color": "#1c1c20",
+  "theme_color": "#1c1c20",
+  "icons": [
+    {
+      "src": "assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -4,6 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Fitness Club — Sterling Heights, MI</title>
+<meta name="description" content="Private fitness club in Sterling Heights, MI. 24/7 key FOB access, elite strength and cardio equipment, infrared sauna, turf training area, and private showers. $50/month, no contract.">
+<meta name="keywords" content="M Fitness Club, gym Sterling Heights, 24 hour gym Michigan, private fitness club, infrared sauna, turf training">
+<meta name="author" content="M Fitness Club">
+<link rel="canonical" href="https://adventurini.github.io/mfit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M Fitness Club">
+<meta property="og:title" content="M Fitness Club — Sterling Heights, MI">
+<meta property="og:description" content="Private fitness club with 24/7 access, elite equipment, infrared sauna, and functional turf. Train without limits.">
+<meta property="og:url" content="https://adventurini.github.io/mfit/">
+<meta property="og:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="M Fitness Club logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="M Fitness Club — Sterling Heights, MI">
+<meta name="twitter:description" content="Private fitness club with 24/7 access, elite equipment, infrared sauna, and functional turf.">
+<meta name="twitter:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta name="theme-color" content="#1c1c20">
+<meta name="msapplication-TileColor" content="#1c1c20">
+<meta name="msapplication-config" content="browserconfig.xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -34,14 +60,19 @@
   }
 
   .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.9rem;
-    letter-spacing: 0.1em;
-    color: #f5f3ef;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    color: #f5f3ef;
   }
 
-  .logo em { font-style: normal; color: #c8f000; }
+  .logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .f-brand .logo img { height: 48px; }
 
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
@@ -195,31 +226,32 @@
     display: block;
   }
 
-  /* VIDEO PANEL */
+  /* HERO PHOTO */
   .hero-vid {
     position: relative;
     background: #1a1a1e;
     overflow: hidden;
+    min-height: 50vh;
   }
 
-  .hero-vid iframe {
+  .hero-photo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: cover;
   }
 
   .hero-vid::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, #1c1c20 0%, transparent 28%);
+    background: linear-gradient(90deg, #1c1c20 0%, transparent 32%);
     pointer-events: none;
     z-index: 1;
   }
 
-  .tour-tag {
+  .hero-tour-link {
     position: absolute;
     bottom: 1.8rem;
     left: 2rem;
@@ -228,7 +260,12 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #c8f000;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
   }
+
+  .hero-tour-link:hover { border-color: #c8f000; color: #f5f3ef; }
 
   /* TICKER */
   .ticker-wrap {
@@ -333,19 +370,26 @@
     overflow: hidden;
   }
 
-  .m-visual-bg {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22rem;
-    color: rgba(200,240,0,0.04);
+  .m-visual-img {
     position: absolute;
-    line-height: 1;
-    user-select: none;
-    letter-spacing: -0.05em;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .m-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(28,28,32,0.15) 0%, rgba(28,28,32,0.88) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .m-visual-text {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
   }
 
@@ -429,6 +473,67 @@
   }
 
   .feat a:hover { opacity: 1; }
+
+  /* FACILITY GALLERY */
+  .facility-gallery {
+    background: #1c1c20;
+    padding: 6rem 5rem 7rem;
+    border-top: 1px solid #2a2a30;
+  }
+
+  .facility-gallery-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .facility-gallery h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    letter-spacing: 0.05em;
+    line-height: 0.95;
+    margin-bottom: 2.5rem;
+    color: #f5f3ef;
+  }
+
+  .facility-gallery h2 span { color: #c8f000; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .gallery-grid figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #2e2e36;
+    aspect-ratio: 4/3;
+    background: #1a1a1e;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .gallery-grid figure:hover img { transform: scale(1.04); }
+
+  .gallery-grid figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c8f000;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  }
 
   /* PRICING */
   .pricing {
@@ -651,6 +756,8 @@
     .mission { padding: 5rem 2.5rem; }
     .mission-inner { grid-template-columns: 1fr; gap: 3rem; }
     .feats-grid { grid-template-columns: 1fr 1fr; padding: 4rem 2.5rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .facility-gallery { padding: 5rem 2.5rem; }
     .pricing { padding: 5rem 2.5rem; }
     .pricing-inner { grid-template-columns: 1fr; gap: 3rem; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 3rem 2.5rem; }
@@ -664,6 +771,8 @@
     .hero h1 { font-size: 4rem; }
     .hero-text { padding: 3rem 1.5rem 2.5rem; }
     .feats-grid { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .facility-gallery { padding: 4rem 1.5rem; }
     .mission { padding: 4rem 1.5rem; }
     .pricing { padding: 4rem 1.5rem; }
     .pc-head, .pc-body { padding-left: 1.8rem; padding-right: 1.8rem; }
@@ -675,7 +784,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><em>M</em>FITCLUB</a>
+  <a href="index.html" class="logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="amenities.html">Amenities</a></li>
@@ -735,12 +844,8 @@
   </div>
 
   <div class="hero-vid">
-    <iframe
-      src="https://player.vimeo.com/video/1062896935?badge=0&byline=0&portrait=0&title=0&autoplay=0&loop=1&muted=1&controls=1"
-      allow="autoplay; fullscreen; picture-in-picture"
-      title="M Fitness Club Tour">
-    </iframe>
-    <div class="tour-tag">▶ &nbsp;Gym Tour</div>
+    <img class="hero-photo" src="assets/hero-exterior.png" alt="M Fitness Club building exterior at night with illuminated signage" width="1600" height="900" fetchpriority="high">
+    <a class="hero-tour-link" href="https://vimeo.com/1062896935" target="_blank" rel="noopener noreferrer">▶ Watch gym tour</a>
   </div>
 </section>
 
@@ -787,11 +892,44 @@
       </div>
     </div>
     <div class="m-visual">
-      <div class="m-visual-bg">M</div>
+      <img class="m-visual-img" src="assets/reception.png" alt="Reception area at M Fitness Club" width="800" height="1000" loading="lazy">
       <div class="m-visual-text">
         <p>Sterling Heights, MI</p>
         <h3>5742 15 Mile Rd</h3>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITY GALLERY -->
+<section class="facility-gallery" aria-labelledby="gallery-heading">
+  <div class="facility-gallery-inner">
+    <h2 id="gallery-heading">Inside <span>The Club</span></h2>
+    <div class="gallery-grid">
+      <figure>
+        <img src="assets/equipment-1.png" alt="Strength and cardio floor with treadmills and training space" width="800" height="600" loading="lazy">
+        <figcaption>Training floor</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/equipment-2.png" alt="Strength machines and free weight area" width="800" height="600" loading="lazy">
+        <figcaption>Strength zone</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/equipment-3.png" alt="Gym interior with weight equipment and mirrors" width="800" height="600" loading="lazy">
+        <figcaption>Equipment</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/cycling.png" alt="Row of spin bikes in the cardio area" width="800" height="600" loading="lazy">
+        <figcaption>Spin studio</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/turf-functional.png" alt="Functional training turf with cardio equipment" width="800" height="600" loading="lazy">
+        <figcaption>Turf &amp; cardio</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/outdoor-training.png" alt="Outdoor functional training area with tires and medicine balls" width="800" height="600" loading="lazy">
+        <figcaption>Outdoor training</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -878,7 +1016,7 @@
 <footer>
   <div class="footer-top">
     <div class="f-brand">
-      <a href="index.html" class="logo"><em>M</em>FITCLUB</a>
+      <a href="index.html" class="logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
       <p>A private fitness club in Sterling Heights, MI. Train without limits — 24/7/365.</p>
     </div>
     <div class="f-col">

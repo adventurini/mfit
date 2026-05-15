@@ -4,6 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Membership — M Fitness Club</title>
+<meta name="description" content="Join M Fitness Club: $50/month, $100 one-time enrollment, no contract. 24/7 access, full facility, sauna, turf, and private showers in Sterling Heights, MI.">
+<meta name="keywords" content="gym membership Sterling Heights, no contract gym, 24 hour gym membership, M Fitness Club pricing">
+<link rel="canonical" href="https://adventurini.github.io/mfit/membership.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M Fitness Club">
+<meta property="og:title" content="Membership — M Fitness Club">
+<meta property="og:description" content="$50/month, no contract. Full 24/7 access to strength, cardio, sauna, turf, and private showers.">
+<meta property="og:url" content="https://adventurini.github.io/mfit/membership.html">
+<meta property="og:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta property="og:image:alt" content="M Fitness Club logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Membership — M Fitness Club">
+<meta name="twitter:description" content="$50/month, no contract. Full 24/7 access to every amenity.">
+<meta name="twitter:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta name="theme-color" content="#1c1c20">
+<meta name="msapplication-TileColor" content="#1c1c20">
+<meta name="msapplication-config" content="browserconfig.xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -44,14 +67,16 @@
   }
 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.12em;
-    color: #f5f3ef !important;
+    display: flex;
+    align-items: center;
     text-decoration: none;
   }
 
-  .nav-logo span { color: var(--accent); }
+  .nav-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
 
   .nav-links {
     display: flex;
@@ -113,6 +138,10 @@
   }
 
   .page-hero-inner { position: relative; z-index: 2; }
+
+  .page-hero.page-hero--img {
+    background: linear-gradient(115deg, rgba(26,26,26,0.94) 38%, rgba(26,26,26,0.45) 100%), url('assets/turf-functional.png') center / cover no-repeat;
+  }
 
   .breadcrumb {
     font-size: 0.72rem;
@@ -734,7 +763,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><span>M</span>FitClub</a>
+  <a href="index.html" class="nav-logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="amenities.html">Amenities</a></li>
@@ -764,7 +793,7 @@
 </div>
 
 <!-- PAGE HERO -->
-<div class="page-hero">
+<div class="page-hero page-hero--img">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> / Membership</div>
     <h1>Simple.<br><em>Honest.</em> Pricing.</h1>

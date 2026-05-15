@@ -4,6 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amenities — M Fitness Club</title>
+<meta name="description" content="Tour M Fitness Club amenities: elite strength and cardio equipment, 500+ sq ft functional turf, infrared sauna, private showers, supplement bar, and 24/7 access in Sterling Heights, MI.">
+<meta name="keywords" content="gym amenities, infrared sauna, functional turf, cardio equipment Sterling Heights, private gym">
+<link rel="canonical" href="https://adventurini.github.io/mfit/amenities.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M Fitness Club">
+<meta property="og:title" content="Amenities — M Fitness Club">
+<meta property="og:description" content="Strength floor, cardio deck, turf training, infrared sauna, and more at our private Sterling Heights fitness club.">
+<meta property="og:url" content="https://adventurini.github.io/mfit/amenities.html">
+<meta property="og:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta property="og:image:alt" content="M Fitness Club logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amenities — M Fitness Club">
+<meta name="twitter:description" content="Strength floor, cardio deck, turf training, infrared sauna, and more.">
+<meta name="twitter:image" content="https://adventurini.github.io/mfit/assets/og-image.png">
+<meta name="theme-color" content="#1c1c20">
+<meta name="msapplication-TileColor" content="#1c1c20">
+<meta name="msapplication-config" content="browserconfig.xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -44,14 +67,16 @@
   }
 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.12em;
-    color: #f5f3ef !important;
+    display: flex;
+    align-items: center;
     text-decoration: none;
   }
 
-  .nav-logo span { color: var(--accent); }
+  .nav-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
 
   .nav-links {
     display: flex;
@@ -110,6 +135,10 @@
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse at 30% 60%, rgba(200,240,0,0.07) 0%, transparent 55%);
+  }
+
+  .page-hero.page-hero--img {
+    background: linear-gradient(115deg, rgba(26,26,26,0.94) 38%, rgba(26,26,26,0.5) 100%), url('assets/equipment-3.png') center / cover no-repeat;
   }
 
   .page-hero-inner { position: relative; z-index: 2; }
@@ -222,10 +251,25 @@
     overflow: hidden;
   }
 
+  .amenity-visual img.amenity-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .amenity-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .amenity-visual-icon {
-    font-size: 6rem;
-    opacity: 0.15;
-    filter: grayscale(1);
+    display: none;
   }
 
   .amenity-visual-label {
@@ -236,6 +280,7 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
+    z-index: 2;
   }
 
   /* PERKS GRID */
@@ -418,7 +463,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><span>M</span>FitClub</a>
+  <a href="index.html" class="nav-logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="amenities.html" class="active">Amenities</a></li>
@@ -448,7 +493,7 @@
 </div>
 
 <!-- PAGE HERO -->
-<div class="page-hero">
+<div class="page-hero page-hero--img">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> / Amenities</div>
     <h1>World-Class<br><em>Amenities</em></h1>
@@ -474,7 +519,7 @@
     </div>
   </div>
   <div class="amenity-visual">
-    <span class="amenity-visual-icon">🏋️</span>
+    <img class="amenity-photo" src="assets/equipment-4.png" alt="Selectorized strength machines on the gym floor" width="900" height="675" loading="lazy">
     <span class="amenity-visual-label">Strength Floor</span>
   </div>
 </div>
@@ -482,7 +527,7 @@
 <!-- CARDIO -->
 <div class="amenity-section">
   <div class="amenity-visual">
-    <span class="amenity-visual-icon">🏃</span>
+    <img class="amenity-photo" src="assets/treadmills.png" alt="Row of treadmills and cardio machines" width="900" height="675" loading="lazy">
     <span class="amenity-visual-label">Cardio Deck</span>
   </div>
   <div class="amenity-content">
@@ -518,7 +563,7 @@
     </div>
   </div>
   <div class="amenity-visual">
-    <span class="amenity-visual-icon">⚡</span>
+    <img class="amenity-photo" src="assets/turf-cardio.png" alt="Functional turf area alongside cardio equipment" width="900" height="675" loading="lazy">
     <span class="amenity-visual-label">Functional Turf</span>
   </div>
 </div>
@@ -526,7 +571,7 @@
 <!-- SAUNA -->
 <div class="amenity-section">
   <div class="amenity-visual">
-    <span class="amenity-visual-icon">🌡️</span>
+    <img class="amenity-photo" src="assets/sauna.png" alt="Infrared sauna with interior lighting" width="900" height="675" loading="lazy">
     <span class="amenity-visual-label">Infrared Sauna</span>
   </div>
   <div class="amenity-content">
@@ -546,7 +591,7 @@
     <p>No need to plan around supplement runs. We keep you stocked and ready to perform.</p>
   </div>
   <div class="amenity-visual">
-    <span class="amenity-visual-icon">💊</span>
+    <img class="amenity-photo" src="assets/reception.png" alt="Modern reception desk at M Fitness Club" width="900" height="675" loading="lazy">
     <span class="amenity-visual-label">Supplement Bar</span>
   </div>
 </div>
