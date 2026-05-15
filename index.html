@@ -54,7 +54,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 2.5rem;
-    height: 68px;
+    height: 90px;
     background: #1c1c20;
     border-bottom: 1px solid #2a2a30;
   }
@@ -67,12 +67,18 @@
   }
 
   .logo img {
-    height: 44px;
+    height: 76px;
     width: auto;
+    max-width: min(58vw, 420px);
+    object-fit: contain;
     display: block;
   }
 
-  .f-brand .logo img { height: 48px; }
+  .f-brand .logo img {
+    height: 112px;
+    max-width: min(92%, 420px);
+    object-fit: contain;
+  }
 
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
@@ -99,7 +105,7 @@
 
   /* HERO */
   .hero {
-    padding-top: 68px;
+    padding-top: 90px;
     min-height: 100vh;
     display: grid;
     grid-template-columns: 55% 45%;
@@ -642,7 +648,7 @@
     border-bottom: 1px solid #2e2e36;
   }
 
-  .f-brand .logo { font-size: 2.2rem; display: block; margin-bottom: 1rem; }
+  .f-brand .logo { display: block; margin-bottom: 1.25rem; }
   .f-brand p { font-size: 0.83rem; color: #bbb; line-height: 1.7; max-width: 240px; }
 
   .f-col h4 { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c8f000; margin-bottom: 1.2rem; }
@@ -691,7 +697,7 @@
   .mob-menu {
     display: none;
     position: fixed;
-    top: 68px; left: 0; right: 0; bottom: 0;
+    top: 90px; left: 0; right: 0; bottom: 0;
     background: #1c1c20;
     z-index: 198;
     flex-direction: column;
@@ -753,6 +759,7 @@
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-vid { height: 56vw; min-height: 280px; }
     .hero-text { padding: 4rem 2.5rem 3rem; }
+    .logo img { height: 68px; max-width: min(62vw, 380px); }
     .mission { padding: 5rem 2.5rem; }
     .mission-inner { grid-template-columns: 1fr; gap: 3rem; }
     .feats-grid { grid-template-columns: 1fr 1fr; padding: 4rem 2.5rem; }
@@ -766,6 +773,11 @@
   }
 
   @media (max-width: 680px) {
+    nav { height: 82px; }
+    .hero { padding-top: 82px; }
+    .mob-menu { top: 82px; }
+    .logo img { height: 54px; max-width: min(72vw, 320px); }
+    .f-brand .logo img { height: 88px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .hero h1 { font-size: 4rem; }
@@ -784,7 +796,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
+  <a href="index.html" class="logo"><img src="assets/logo.png" width="1024" height="576" alt="M Fitness Club — Fitness Club logo"></a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="amenities.html">Amenities</a></li>
@@ -1016,7 +1028,7 @@
 <footer>
   <div class="footer-top">
     <div class="f-brand">
-      <a href="index.html" class="logo"><img src="assets/logo.png" width="150" height="150" alt="M Fitness Club"></a>
+      <a href="index.html" class="logo"><img src="assets/logo.png" width="1024" height="576" alt="M Fitness Club — Fitness Club logo"></a>
       <p>A private fitness club in Sterling Heights, MI. Train without limits — 24/7/365.</p>
     </div>
     <div class="f-col">
