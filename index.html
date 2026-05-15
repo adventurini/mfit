@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#1c1c20;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M Fitness Club — Sterling Heights, MI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background: #1c1c20 !important; }
+
+  body {
+    background: #1c1c20 !important;
+    color: #f5f3ef !important;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 68px;
+    background: #1c1c20;
+    border-bottom: 1px solid #2a2a30;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 0.1em;
+    color: #f5f3ef;
+    text-decoration: none;
+  }
+
+  .logo em { font-style: normal; color: #c8f000; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+  .nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: #c8f000; }
+
+  .nav-cta {
+    background: #c8f000 !important;
+    color: #f0f0f0 !important;
+    padding: 0.45rem 1.2rem !important;
+    font-weight: 500 !important;
+  }
+
+  .nav-cta:hover { background: #f5f3ef !important; }
+
+  /* HERO */
+  .hero {
+    padding-top: 68px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    background: #1c1c20;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 65% 50%, rgba(200,240,0,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8f000;
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #c8f000;
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 8.5vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.03em;
+    color: #f5f3ef;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 .acc { color: #c8f000; display: block; }
+
+  .hero-sub {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: #d0d0d0;
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-sub strong { color: #f5f3ef; font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  .btn-p {
+    background: #c8f000;
+    color: #1c1c20;
+    padding: 0.9rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-p:hover { background: #f5f3ef; }
+
+  .btn-g {
+    border: 1px solid #383840;
+    color: #ccc;
+    padding: 0.9rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-g:hover { border-color: #c8f000; color: #c8f000; }
+
+  .stats {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #2a2a30;
+  }
+
+  .stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: #c8f000;
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-l {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* VIDEO PANEL */
+  .hero-vid {
+    position: relative;
+    background: #1a1a1e;
+    overflow: hidden;
+  }
+
+  .hero-vid iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .hero-vid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #1c1c20 0%, transparent 28%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .tour-tag {
+    position: absolute;
+    bottom: 1.8rem;
+    left: 2rem;
+    z-index: 2;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c8f000;
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    background: #c8f000;
+    overflow: hidden;
+    padding: 0.8rem 0;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-flex;
+    animation: scroll 24s linear infinite;
+  }
+
+  .tick {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    color: #1c1c20;
+    text-transform: uppercase;
+    padding: 0 2.5rem;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    flex-shrink: 0;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* MISSION */
+  .mission {
+    background: #1c1c20;
+    padding: 7rem 5rem;
+  }
+
+  .mission-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .sec-lbl {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8f000;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .sec-lbl::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: #c8f000;
+    flex-shrink: 0;
+  }
+
+  .mission h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 4.5vw, 5rem);
+    line-height: 0.93;
+    letter-spacing: 0.04em;
+    color: #f5f3ef;
+    margin-bottom: 1.8rem;
+  }
+
+  .mission h2 span { color: #c8f000; }
+
+  .mission p { font-size: 0.95rem; line-height: 1.85; color: #d0d0d0; margin-bottom: 1.2rem; }
+  .mission p strong { color: #ddd; font-weight: 500; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
+
+  .tag {
+    border: 1px solid #2e2e36;
+    color: #ccc;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.38rem 0.85rem;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+
+  .tag:hover { border-color: #c8f000; color: #c8f000; }
+
+  .m-visual {
+    background: #1e1e22;
+    border: 1px solid #2e2e36;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .m-visual-bg {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22rem;
+    color: rgba(200,240,0,0.04);
+    position: absolute;
+    line-height: 1;
+    user-select: none;
+    letter-spacing: -0.05em;
+  }
+
+  .m-visual-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .m-visual-text p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.28em;
+    color: #c8f000;
+    margin-bottom: 0.4rem;
+  }
+
+  .m-visual-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.08em;
+    color: #f5f3ef;
+    line-height: 1;
+  }
+
+  /* FEATURES */
+  .feats-bg {
+    background: #131316;
+    border-top: 1px solid #2e2e36;
+    border-bottom: 1px solid #2e2e36;
+  }
+
+  .feats-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .feat {
+    background: #1c1c20;
+    border: 1px solid #2e2e36;
+    padding: 2.8rem 2.2rem;
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feat::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: #c8f000;
+    transform: scaleX(0);
+    transition: transform 0.35s;
+    transform-origin: left;
+  }
+
+  .feat:hover { border-color: #383840; }
+  .feat:hover::after { transform: scaleX(1); }
+
+  .feat-ic { font-size: 1.7rem; margin-bottom: 1.3rem; }
+
+  .feat h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: #f5f3ef;
+    margin-bottom: 0.7rem;
+  }
+
+  .feat p { font-size: 0.85rem; line-height: 1.7; color: #ccc; }
+
+  .feat a {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c8f000;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .feat a:hover { opacity: 1; }
+
+  /* PRICING */
+  .pricing {
+    background: #1c1c20;
+    padding: 7rem 5rem;
+  }
+
+  .pricing-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .pricing h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 4vw, 4.5rem);
+    line-height: 0.93;
+    letter-spacing: 0.04em;
+    color: #f5f3ef;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing h2 span { color: #c8f000; }
+
+  .pricing-desc { font-size: 0.92rem; line-height: 1.8; color: #ccc; margin-bottom: 2rem; }
+
+  .pc {
+    background: #1e1e22;
+    border: 1px solid #2e2e36;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pc::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #c8f000;
+  }
+
+  .pc-head {
+    padding: 2.8rem 3rem 2rem;
+    border-bottom: 1px solid #2e2e36;
+  }
+
+  .pc-lbl { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; margin-bottom: 1rem; }
+
+  .pc-price { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.5rem; }
+
+  .pc-$ {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: #c8f000;
+    align-self: flex-start;
+    margin-top: 0.6rem;
+  }
+
+  .pc-amt {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5.5rem;
+    color: #c8f000;
+    line-height: 1;
+  }
+
+  .pc-per {
+    font-size: 0.85rem;
+    color: #bbb;
+    letter-spacing: 0.1em;
+    align-self: flex-end;
+    margin-bottom: 0.4rem;
+  }
+
+  .pc-enroll { font-size: 0.8rem; color: #bbb; }
+  .pc-enroll strong { color: #ddd; }
+
+  .pc-body { padding: 2.5rem 3rem 3rem; }
+
+  .pc-perks { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.5rem; }
+
+  .pc-perks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.87rem;
+    color: #d0d0d0;
+    line-height: 1.5;
+  }
+
+  .pc-perks li .chk { color: #c8f000; font-size: 0.72rem; flex-shrink: 0; margin-top: 0.15rem; }
+  .pc-perks li strong { color: #bbb; font-weight: 500; }
+
+  /* FOOTER */
+  footer { background: #1c1c20; border-top: 1px solid #2e2e36; }
+
+  .footer-top {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 5rem 3rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    border-bottom: 1px solid #2e2e36;
+  }
+
+  .f-brand .logo { font-size: 2.2rem; display: block; margin-bottom: 1rem; }
+  .f-brand p { font-size: 0.83rem; color: #bbb; line-height: 1.7; max-width: 240px; }
+
+  .f-col h4 { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c8f000; margin-bottom: 1.2rem; }
+  .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .f-col a { font-size: 0.83rem; color: #bbb; text-decoration: none; transition: color 0.2s; }
+  .f-col a:hover { color: #f5f3ef; }
+
+  .footer-bot {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.73rem;
+    color: #ddd;
+  }
+
+  .footer-bot a { color: #ddd; text-decoration: none; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 6px;
+    background: none;
+    border: none;
+    z-index: 201;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #f5f3ef;
+    transition: all 0.28s ease;
+    border-radius: 1px;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mob-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0; bottom: 0;
+    background: #1c1c20;
+    z-index: 198;
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    border-top: 1px solid #2a2a30;
+    overflow-y: auto;
+  }
+
+  .mob-menu.open { display: flex; }
+
+  .mob-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+    color: #ddd;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1e1e24;
+    transition: color 0.2s;
+    display: block;
+  }
+
+  .mob-menu a:hover, .mob-menu a.active { color: #c8f000; }
+
+  .mob-cta {
+    margin-top: 1.5rem !important;
+    background: #c8f000 !important;
+    color: #f0f0f0 !important;
+    text-align: center;
+    padding: 1rem !important;
+    font-size: 1.8rem !important;
+    border: none !important;
+  }
+
+  .mob-info {
+    margin-top: auto;
+    padding-top: 2.5rem;
+    border-top: 1px solid #1e1e24;
+  }
+
+  .mob-info p { font-size: 0.8rem; color: #ddd; line-height: 1.9; }
+  .mob-info a { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: #c0c0c8 !important; display: inline !important; border: none !important; padding: 0 !important; }
+  .mob-info a:hover { color: #c8f000 !important; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .eyebrow { animation: fadeUp 0.7s ease 0.1s both; }
+  .hero h1 { animation: fadeUp 0.7s ease 0.25s both; }
+  .hero-sub { animation: fadeUp 0.7s ease 0.4s both; }
+  .hero-actions { animation: fadeUp 0.7s ease 0.5s both; }
+  .stats { animation: fadeUp 0.7s ease 0.65s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-vid { height: 56vw; min-height: 280px; }
+    .hero-text { padding: 4rem 2.5rem 3rem; }
+    .mission { padding: 5rem 2.5rem; }
+    .mission-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .feats-grid { grid-template-columns: 1fr 1fr; padding: 4rem 2.5rem; }
+    .pricing { padding: 5rem 2.5rem; }
+    .pricing-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 3rem 2.5rem; }
+    .footer-bot { padding: 1.5rem 2.5rem; }
+    nav { padding: 0 1.5rem; }
+  }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero h1 { font-size: 4rem; }
+    .hero-text { padding: 3rem 1.5rem 2.5rem; }
+    .feats-grid { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .mission { padding: 4rem 1.5rem; }
+    .pricing { padding: 4rem 1.5rem; }
+    .pc-head, .pc-body { padding-left: 1.8rem; padding-right: 1.8rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; padding: 2.5rem 1.5rem; gap: 1.5rem; }
+    .footer-bot { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><em>M</em>FITCLUB</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Join Now</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" class="active">Home</a>
+  <a href="amenities.html">Amenities</a>
+  <a href="membership.html">Membership</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-cta">Join Now</a>
+  <div class="mob-info">
+    <p>
+      <a href="tel:5863549966">586.354.9966</a><br>
+      5742 15 Mile Rd, Sterling Heights, MI<br>
+      Staff hours: Mon–Fri 10am–8pm<br>
+      Members: 24/7/365
+    </p>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Private Fitness Club · Sterling Heights, MI</div>
+    <h1>Train<br>Without<br><span class="acc">Limits</span></h1>
+    <p class="hero-sub">
+      The M is a <strong>private fitness club</strong> where members discover their full potential.
+      Elite equipment, expert guidance, and <strong>24/7/365 access</strong>.
+    </p>
+    <div class="hero-actions">
+      <a href="membership.html" class="btn-p">Become a Member</a>
+      <a href="amenities.html" class="btn-g">Explore the Facility</a>
+    </div>
+    <div class="stats">
+      <div>
+        <span class="stat-n">24/7</span>
+        <span class="stat-l">Gym Access</span>
+      </div>
+      <div>
+        <span class="stat-n">150<small style="font-size:1.3rem">lb</small></span>
+        <span class="stat-l">Max Dumbbells</span>
+      </div>
+      <div>
+        <span class="stat-n">$50</span>
+        <span class="stat-l">Per Month</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-vid">
+    <iframe
+      src="https://player.vimeo.com/video/1062896935?badge=0&byline=0&portrait=0&title=0&autoplay=0&loop=1&muted=1&controls=1"
+      allow="autoplay; fullscreen; picture-in-picture"
+      title="M Fitness Club Tour">
+    </iframe>
+    <div class="tour-tag">▶ &nbsp;Gym Tour</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="tick">Elite Strength</span>
+    <span class="tick">24/7 Access</span>
+    <span class="tick">Infrared Sauna</span>
+    <span class="tick">Private Showers</span>
+    <span class="tick">No Contracts</span>
+    <span class="tick">Functional Turf</span>
+    <span class="tick">Supplement Bar</span>
+    <span class="tick">Expert Staff</span>
+    <span class="tick">Free Wi-Fi</span>
+    <span class="tick">Key FOB Entry</span>
+    <span class="tick">Elite Strength</span>
+    <span class="tick">24/7 Access</span>
+    <span class="tick">Infrared Sauna</span>
+    <span class="tick">Private Showers</span>
+    <span class="tick">No Contracts</span>
+    <span class="tick">Functional Turf</span>
+    <span class="tick">Supplement Bar</span>
+    <span class="tick">Expert Staff</span>
+    <span class="tick">Free Wi-Fi</span>
+    <span class="tick">Key FOB Entry</span>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="mission-inner">
+    <div>
+      <div class="sec-lbl">Our Mission</div>
+      <h2>More Than<br>a <span>Gym</span></h2>
+      <p>At M Fitness Club, we believe fitness is more than just working out — it's about <strong>building a lifestyle</strong> that supports both physical and mental well-being.</p>
+      <p>Our mission is to provide a <strong>high-quality, exclusive training environment</strong> where members can push their limits, feel supported, and achieve real results. Whether you're an <strong>elite athlete or just starting</strong>, we're here for you.</p>
+      <div class="tags">
+        <span class="tag">Elite Equipment</span>
+        <span class="tag">Private Club</span>
+        <span class="tag">Community</span>
+        <span class="tag">Recovery</span>
+        <span class="tag">Exclusive Access</span>
+      </div>
+    </div>
+    <div class="m-visual">
+      <div class="m-visual-bg">M</div>
+      <div class="m-visual-text">
+        <p>Sterling Heights, MI</p>
+        <h3>5742 15 Mile Rd</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="feats-bg">
+  <div class="feats-grid">
+    <div class="feat">
+      <div class="feat-ic">🏋️</div>
+      <h3>Elite Strength</h3>
+      <p>Iron grip dumbbells to 150 lbs. Arsenal, Nautilus, Hammer Strength racks, Keiser air pressure equipment, and more.</p>
+      <a href="amenities.html">See all equipment →</a>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">🏃</div>
+      <h3>Cardio Deck</h3>
+      <p>Stairmasters, incline trainers, low-impact treadmills, ellipticals, spin bikes, rowers, and variable stride trainers.</p>
+      <a href="amenities.html">View cardio →</a>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">🌿</div>
+      <h3>Infrared Sauna</h3>
+      <p>Boost circulation, reduce inflammation, and accelerate muscle recovery with private infrared sauna sessions.</p>
+      <a href="amenities.html">Recovery tools →</a>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">🔑</div>
+      <h3>24/7 Key FOB Access</h3>
+      <p>Train any time — early mornings, late nights, holidays. Secure key FOB entry with full video surveillance.</p>
+      <a href="membership.html">Membership →</a>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">🚿</div>
+      <h3>Private Showers</h3>
+      <p>Spa-level single-user private bathrooms and showers. Clean, modern, and comfortable every single visit.</p>
+      <a href="amenities.html">Facility details →</a>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">⚡</div>
+      <h3>Functional Turf</h3>
+      <p>500+ sq ft with sleds, battle ropes, kettlebells, med balls, suspension rings, and punching bags.</p>
+      <a href="amenities.html">View the turf →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <div>
+      <div class="sec-lbl">Membership</div>
+      <h2>No Contracts.<br>No <span>Nonsense.</span></h2>
+      <p class="pricing-desc">Straightforward membership with no hidden fees or maintenance charges. One enrollment fee, one flat monthly rate. Full access to every square foot of the facility.</p>
+      <a href="contact.html" class="btn-p">Get Started Today</a>
+    </div>
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-lbl">Monthly Membership</div>
+        <div class="pc-price">
+          <span class="pc-$">$</span>
+          <span class="pc-amt">50</span>
+          <span class="pc-per">/ month</span>
+        </div>
+        <div class="pc-enroll"><strong>$100</strong> one-time enrollment · no contract</div>
+      </div>
+      <div class="pc-body">
+        <ul class="pc-perks">
+          <li><span class="chk">✓</span><span><strong>24/7/365 key FOB access</strong></span></li>
+          <li><span class="chk">✓</span><span>Full strength floor — dumbbells to <strong>150 lbs</strong></span></li>
+          <li><span class="chk">✓</span><span>Complete cardio deck</span></li>
+          <li><span class="chk">✓</span><span>Infrared sauna access</span></li>
+          <li><span class="chk">✓</span><span>500+ sq ft functional turf area</span></li>
+          <li><span class="chk">✓</span><span>Private single-user bathrooms & showers</span></li>
+          <li><span class="chk">✓</span><span>Complimentary equipment orientation</span></li>
+          <li><span class="chk">✓</span><span>Supplement bar · Free Wi-Fi · Towel service</span></li>
+        </ul>
+        <a href="contact.html" class="btn-p" style="display:block;text-align:center;width:100%;">Join the Club</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <a href="index.html" class="logo"><em>M</em>FITCLUB</a>
+      <p>A private fitness club in Sterling Heights, MI. Train without limits — 24/7/365.</p>
+    </div>
+    <div class="f-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="amenities.html">Amenities</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><a>Members: 24/7/365</a></li>
+        <li><a>Staff: Mon–Fri</a></li>
+        <li><a>10am – 8pm</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="tel:5863549966">586.354.9966</a></li>
+        <li><a href="contact.html">Send a Message</a></li>
+        <li><a href="https://www.facebook.com/MFitnessClub/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/mfitclub/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2025 M Fitness Club · 5742 15 Mile Rd, Sterling Heights, MI 48310</span>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hbg');
+  const mob = document.getElementById('mobMenu');
+  hbg.addEventListener('click', () => {
+    hbg.classList.toggle('open');
+    mob.classList.toggle('open');
+    document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  });
+  // Close on link click
+  mob.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hbg.classList.remove('open');
+      mob.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>

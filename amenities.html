@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amenities — M Fitness Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1c1c20;
+    --white: #f5f3ef;
+    --accent: #c8f000;
+    --red: #e8162a;
+    --gray: #1a1a1a;
+    --mid: #2e2e2e;
+    --text-muted: #888;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; background: #1c1c20 !important; color: #f5f3ef !important; }
+  html, body { background-color: #f0f0f0 !important; }
+
+  body {
+    background: #1c1c20 !important;
+    color: #f5f3ef !important;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 72px;
+    background: rgba(8,8,8,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(200,240,0,0.1);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    color: #f5f3ef !important;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black) !important;
+    padding: 0.5rem 1.4rem;
+    font-weight: 500 !important;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding-top: 72px;
+    min-height: 44vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 4rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    background: var(--gray);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: 'AMENITIES';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(6rem, 18vw, 18rem);
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    pointer-events: none;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(200,240,0,0.07) 0%, transparent 55%);
+  }
+
+  .page-hero-inner { position: relative; z-index: 2; }
+
+  .breadcrumb {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+  .page-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    letter-spacing: 0.05em;
+    line-height: 0.95;
+  }
+
+  .page-hero h1 em { font-style: normal; color: var(--accent); }
+
+  .page-hero-sub {
+    margin-top: 1.2rem;
+    font-size: 1rem;
+    color: #d0d0d0;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* AMENITY SECTIONS */
+  .amenity-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-bottom: 1px solid var(--mid);
+  }
+
+  .amenity-section:nth-child(even) .amenity-content { order: 2; }
+  .amenity-section:nth-child(even) .amenity-visual { order: 1; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .amenity-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    letter-spacing: 0.05em;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .amenity-content p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #d5d5d5;
+    margin-bottom: 1.5rem;
+  }
+
+  .amenity-content p strong { color: var(--white); font-weight: 500; }
+
+  .equipment-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .equip-tag {
+    background: var(--gray);
+    border: 1px solid var(--mid);
+    color: #ddd;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    transition: border-color 0.2s;
+  }
+
+  .equip-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  .amenity-visual {
+    aspect-ratio: 4/3;
+    background: var(--gray);
+    border: 1px solid var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .amenity-visual-icon {
+    font-size: 6rem;
+    opacity: 0.15;
+    filter: grayscale(1);
+  }
+
+  .amenity-visual-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* PERKS GRID */
+  .perks-grid-wrap {
+    background: var(--gray);
+    border-top: 1px solid var(--mid);
+    border-bottom: 1px solid var(--mid);
+  }
+
+  .perks-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .perk {
+    background: #1c1c20 !important;
+    border: 1px solid var(--mid);
+    padding: 2.5rem 2rem;
+    transition: border-color 0.3s;
+  }
+
+  .perk:hover { border-color: var(--accent); }
+
+  .perk-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+
+  .perk h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .perk p { font-size: 0.82rem; color: #ccc; line-height: 1.65; }
+
+  /* CTA BANNER */
+  .cta-banner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 5rem;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .cta-banner h2 span { color: var(--accent); }
+
+  .cta-banner p {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--white); }
+
+  footer {
+    background: var(--gray);
+    border-top: 1px solid var(--mid);
+    padding: 3rem 5rem;
+  }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #bbb;
+  }
+
+  .footer-bottom a { color: #ccc; text-decoration: none; }
+
+  @media (max-width: 1024px) {
+    nav { padding: 0 1.5rem; }
+    .page-hero { padding: 5rem 2rem 3rem; }
+    .amenity-section { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 2rem; }
+    .amenity-section:nth-child(even) .amenity-content,
+    .amenity-section:nth-child(even) .amenity-visual { order: unset; }
+    .perks-grid { grid-template-columns: 1fr 1fr; padding: 3rem 2rem; }
+    .cta-banner { padding: 4rem 2rem; }
+    footer { padding: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .perks-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 6px;
+    background: none;
+    border: none;
+    z-index: 201;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #f5f3ef;
+    transition: all 0.28s ease;
+    border-radius: 1px;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mob-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0; bottom: 0;
+    background: #1c1c20;
+    z-index: 198;
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    border-top: 1px solid #2a2a30;
+    overflow-y: auto;
+  }
+  .mob-menu.open { display: flex; }
+  .mob-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+    color: #ddd;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1e1e24;
+    transition: color 0.2s;
+    display: block;
+  }
+  .mob-menu a:hover, .mob-menu a.active { color: #c8f000; }
+  .mob-cta {
+    margin-top: 1.5rem !important;
+    background: #c8f000 !important;
+    color: #f0f0f0 !important;
+    text-align: center;
+    padding: 1rem !important;
+    font-size: 1.8rem !important;
+    border: none !important;
+  }
+  .mob-info {
+    margin-top: auto;
+    padding-top: 2.5rem;
+    border-top: 1px solid #1e1e24;
+  }
+  .mob-info p { font-size: 0.8rem; color: #ddd; line-height: 1.9; }
+  .mob-info a { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: #c0c0c8 !important; display: inline !important; border: none !important; padding: 0 !important; }
+  .mob-info a:hover { color: #c8f000 !important; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><span>M</span>FitClub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="amenities.html" class="active">Amenities</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Join Now</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html">Home</a>
+  <a href="amenities.html"class="active">Amenities</a>
+  <a href="membership.html">Membership</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-cta">Join Now</a>
+  <div class="mob-info">
+    <p>
+      <a href="tel:5863549966">586.354.9966</a><br>
+      5742 15 Mile Rd, Sterling Heights, MI<br>
+      Staff: Mon–Fri 10am–8pm · Members: 24/7/365
+    </p>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Amenities</div>
+    <h1>World-Class<br><em>Amenities</em></h1>
+    <p class="page-hero-sub">Everything you need to train, recover, and perform — all under one roof.</p>
+  </div>
+</div>
+
+<!-- STRENGTH -->
+<div class="amenity-section">
+  <div class="amenity-content">
+    <div class="section-label">Strength Training</div>
+    <h2>Elite Strength Equipment</h2>
+    <p>Various styles of strength training are available to keep our members' workouts engaging. We've invested in the <strong>best brands in the industry</strong> so you always have the right tool for the job.</p>
+    <p>Iron grip dumbbells reach <strong>150 lbs</strong>, with a full range of plate-loaded and selectorized machines from top manufacturers.</p>
+    <div class="equipment-list">
+      <span class="equip-tag">Arsenal Plate Loaded</span>
+      <span class="equip-tag">Arsenal Selectorized</span>
+      <span class="equip-tag">Nautilus Plate Loaded</span>
+      <span class="equip-tag">Startrac Selectorized</span>
+      <span class="equip-tag">Keiser Air Pressure</span>
+      <span class="equip-tag">Hammer Strength Racks</span>
+      <span class="equip-tag">Iron Grip Dumbbells 5–150 lbs</span>
+    </div>
+  </div>
+  <div class="amenity-visual">
+    <span class="amenity-visual-icon">🏋️</span>
+    <span class="amenity-visual-label">Strength Floor</span>
+  </div>
+</div>
+
+<!-- CARDIO -->
+<div class="amenity-section">
+  <div class="amenity-visual">
+    <span class="amenity-visual-icon">🏃</span>
+    <span class="amenity-visual-label">Cardio Deck</span>
+  </div>
+  <div class="amenity-content">
+    <div class="section-label">Cardiovascular</div>
+    <h2>Extensive Cardio Selection</h2>
+    <p>An extensive selection of cardio equipment ensures you always have a machine available, no matter your preference or fitness level. From <strong>high-impact to low-impact options</strong>, we have it covered.</p>
+    <div class="equipment-list">
+      <span class="equip-tag">Stairmasters</span>
+      <span class="equip-tag">Incline Trainers</span>
+      <span class="equip-tag">Low Impact Treadmills</span>
+      <span class="equip-tag">Variable Stride Trainers</span>
+      <span class="equip-tag">Ellipticals</span>
+      <span class="equip-tag">Recumbent Bikes</span>
+      <span class="equip-tag">Spin Bikes</span>
+      <span class="equip-tag">Rowers</span>
+    </div>
+  </div>
+</div>
+
+<!-- TURF -->
+<div class="amenity-section">
+  <div class="amenity-content">
+    <div class="section-label">Functional Training</div>
+    <h2>Turf & Functional Area</h2>
+    <p>Train like an athlete with our dedicated <strong>500+ square foot turf area</strong>. Perfect for conditioning, sport-specific training, and high-intensity work that complements your lifting routine.</p>
+    <div class="equipment-list">
+      <span class="equip-tag">Sleds</span>
+      <span class="equip-tag">Battle Ropes</span>
+      <span class="equip-tag">Kettlebells</span>
+      <span class="equip-tag">Heavy Med Balls</span>
+      <span class="equip-tag">Suspension Rings</span>
+      <span class="equip-tag">Punching Bags</span>
+    </div>
+  </div>
+  <div class="amenity-visual">
+    <span class="amenity-visual-icon">⚡</span>
+    <span class="amenity-visual-label">Functional Turf</span>
+  </div>
+</div>
+
+<!-- SAUNA -->
+<div class="amenity-section">
+  <div class="amenity-visual">
+    <span class="amenity-visual-icon">🌡️</span>
+    <span class="amenity-visual-label">Infrared Sauna</span>
+  </div>
+  <div class="amenity-content">
+    <div class="section-label">Recovery</div>
+    <h2>Infrared Sauna</h2>
+    <p>Relax, recover, and detox with our <strong>infrared saunas</strong>. Designed to boost circulation, reduce inflammation, and speed up muscle recovery, they provide heat therapy for total relaxation and wellness.</p>
+    <p>Infrared technology penetrates deeper than traditional saunas, delivering superior therapeutic benefits with every session.</p>
+  </div>
+</div>
+
+<!-- SUPPLEMENTS -->
+<div class="amenity-section">
+  <div class="amenity-content">
+    <div class="section-label">Nutrition</div>
+    <h2>Fuel Your Performance</h2>
+    <p>We offer a <strong>full line of supplements</strong> so members can maximize recovery and performance. Get everything you need before, during, or after your workout — conveniently right here at the gym.</p>
+    <p>No need to plan around supplement runs. We keep you stocked and ready to perform.</p>
+  </div>
+  <div class="amenity-visual">
+    <span class="amenity-visual-icon">💊</span>
+    <span class="amenity-visual-label">Supplement Bar</span>
+  </div>
+</div>
+
+<!-- PERKS GRID -->
+<div class="perks-grid-wrap">
+  <div class="perks-grid">
+    <div class="perk">
+      <div class="perk-icon">🔑</div>
+      <h4>24/7/365 Access</h4>
+      <p>Secure key FOB entry for all members. Train any time, any day — including holidays.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">🚿</div>
+      <h4>Private Showers</h4>
+      <p>Single-user, spa-level private bathrooms and showers. Clean and comfortable every visit.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">👕</div>
+      <h4>Towel Service</h4>
+      <p>Complimentary towel service included with every membership. We've got you covered.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">📶</div>
+      <h4>Free Wi-Fi</h4>
+      <p>Stream your music, podcasts, and media content while you train. No data needed.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">📹</div>
+      <h4>Video Surveillance</h4>
+      <p>All areas monitored 24/7 for member safety and peace of mind.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">🎓</div>
+      <h4>Equipment Orientation</h4>
+      <p>Every new member receives personal attention and a complimentary orientation.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">💪</div>
+      <h4>Expert Staff</h4>
+      <p>Knowledgeable staff available during staffed hours for ongoing support and guidance.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">🏆</div>
+      <h4>Private Club Feel</h4>
+      <p>Members-only environment. No crowds, no chaos — just focused training.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Ready to Experience <span>The M?</span></h2>
+  <p>See the facility during staffed hours or join online. No contracts, no maintenance fees.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="membership.html" class="btn-primary">View Membership</a>
+    <a href="contact.html" style="border:1px solid var(--mid);color:var(--white);padding:1rem 2.5rem;font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--mid)'">Schedule a Tour</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 M Fitness Club · 5742 15 Mile Rd, Sterling Heights, MI 48310 · <a href="tel:5863549966">586.354.9966</a></span>
+    <div style="display:flex;gap:2rem;">
+      <a href="index.html">Home</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const hbg = document.getElementById('hbg');
+  const mob = document.getElementById('mobMenu');
+  hbg.addEventListener('click', () => {
+    hbg.classList.toggle('open');
+    mob.classList.toggle('open');
+    document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  });
+  mob.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hbg.classList.remove('open');
+      mob.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>
